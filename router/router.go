@@ -125,7 +125,6 @@ func Start(port int, executorUrl string) {
 		log.Fatalf("Failed to parse max retry times: %v", err)
 	}
 
-
 	setupCanaryLoadBalancer()
 	log.Printf("Making canary config mgr from router")
 	canaryconfigmgr.MakeCanaryConfigMgr(fissionClient, kubeClient, restClient)
