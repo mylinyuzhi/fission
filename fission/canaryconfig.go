@@ -70,11 +70,10 @@ func canaryConfigCreate(c *cli.Context) error {
 
 	// check that the trigger references same functions in the function weights
 
-	weight, ok := htTrigger.Spec.FunctionReference.FunctionWeights[funcN]
+	_, ok := htTrigger.Spec.FunctionReference.FunctionWeights[funcN]
 	if !ok {
-
+		log.Fatal("HTTP Trigger doesn't reference the function in Canary Config")
 	}
-
 
 	canaryCfg := &crd.CanaryConfig {
 		Metadata: metav1.ObjectMeta {
